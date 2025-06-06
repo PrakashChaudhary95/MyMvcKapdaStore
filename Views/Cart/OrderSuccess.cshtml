@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Order Successful";
+}
+
+<h2>🎉 Thank you for your order!</h2>
+
+<p>Your order has been placed successfully.</p>
+
+<a href="@Url.Action("Cart", "Prakash")" class="btn btn-primary">Back to Cart</a>
+<a href="/" class="btn btn-secondary" style="margin-left:10px;">Continue Shopping</a>
+
+<style>
+    h2 {
+        color: green;
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    p {
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 40px;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 12px 25px;
+        font-size: 16px;
+        border-radius: 5px;
+        text-decoration: none;
+        margin: 0 auto;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary {
+        background-color: #28a745;
+        color: white;
+        border: none;
+    }
+
+        .btn-primary:hover {
+            background-color: #218838;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+        border: none;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+    div {
+        text-align: center;
+        margin-top: 30px;
+    }
+</style>

@@ -1,0 +1,92 @@
+﻿@model List<KapdaStore.Models.CartItem>
+
+<!-- ✅ Correct: Antiforgery form OUTSIDE of script -->
+<form id="antiforgery-form">
+    @Html.AntiForgeryToken()
+</form>
+
+<table id="cart-table">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr data-product-id="@item.Product.Id">
+                <td>@item.Product.Name</td>
+                <td>
+                    <button type="button" class="qty-btn decrement" data-product-id="@item.Product.Id">-</button>
+                    <span class="qty-display">@item.Quantity</span>
+                    <button type="button" class="qty-btn increment" data-product-id="@item.Product.Id">+</button>
+                </td>
+                <td>₹@item.Product.Price</td>
+                <td class="total-price">₹@(item.Product.Price* item.Quantity)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div style="text-align: center; margin-top: 30px;">
+    <!-- ✅ Updated Razor routing syntax -->
+    <a asp-controller="Cart" asp-action="Checkout" class="btn btn-success btn-lg">🛍️ Buy Now</a>
+</div>
+
+@section Scripts {
+    <script>
+        // ✅ Get the AntiForgery Token
+        const token = document.querySelector('#antiforgery-form input[name="__RequestVerificationToken"]').value;
+
+        async function updateQuantity(productId, change) {
+            try {
+                const response = await fetch('/Cart/UpdateQuantity', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': token
+                    },
+                    body: JSON.stringify({ productId: productId, change: change })
+                });
+
+                if (!response.ok) {
+                    alert('Failed to update quantity.');
+                    return;
+                }
+
+                const updatedCart = await response.json();
+
+                updatedCart.forEach(item => {
+                    const row = document.querySelector(`tr[data-product-id="${item.product.id}"]`);
+                    if (row) {
+                        row.querySelector('.qty-display').textContent = item.quantity;
+                        const price = item.product.price;
+                        row.querySelector('.total-price').textContent = '₹' + (price * item.quantity);
+                    }
+                });
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        }
+
+        // ✅ Ensure buttons work after DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.qty-btn.decrement').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const productId = parseInt(btn.getAttribute('data-product-id'));
+                    updateQuantity(productId, -1);
+                });
+            });
+
+            document.querySelectorAll('.qty-btn.increment').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const productId = parseInt(btn.getAttribute('data-product-id'));
+                    updateQuantity(productId, 1);
+                });
+            });
+        });
+    </script>
+}

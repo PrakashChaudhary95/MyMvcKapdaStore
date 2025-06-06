@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Zara</title>
+    <link href="~/css/stylesheet.css" rel="stylesheet" />
+
+    <style>
+        /* Footer styles */
+        footer {
+            background-color: #222;
+            color: #f0f0f0;
+            padding: 40px 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+        }
+
+            footer .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            footer .footer-row {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                gap: 30px;
+            }
+
+            footer .footer-col {
+                flex: 1 1 200px;
+                min-width: 180px;
+            }
+
+                footer .footer-col h4 {
+                    font-size: 18px;
+                    margin-bottom: 20px;
+                    color: #ff4081;
+                }
+
+                footer .footer-col p,
+                footer .footer-col ul,
+                footer .footer-col li {
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                    color: #ccc;
+                }
+
+                    footer .footer-col ul li {
+                        margin-bottom: 10px;
+                    }
+
+                        footer .footer-col ul li a {
+                            color: #ccc;
+                            text-decoration: none;
+                            transition: color 0.3s ease;
+                        }
+
+                            footer .footer-col ul li a:hover {
+                                color: #ff4081;
+                            }
+
+            footer .social-links a {
+                display: inline-block;
+                height: 36px;
+                width: 36px;
+                background-color: #444;
+                margin-right: 10px;
+                text-align: center;
+                line-height: 36px;
+                border-radius: 50%;
+                color: #ccc;
+                transition: background-color 0.3s ease, color 0.3s ease;
+            }
+
+                footer .social-links a:hover {
+                    background-color: #ff4081;
+                    color: #fff;
+                }
+
+            footer .footer-bottom {
+                text-align: center;
+                margin-top: 30px;
+                border-top: 1px solid #444;
+                padding-top: 20px;
+                color: #888;
+                font-size: 13px;
+            }
+    </style>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="logo">
+                <img src="/images/logo.png" alt="Zara Logo">
+            </div>
+
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="/Prakash/Index">Home</a></li>
+                    <li><a href="/Prakash/About">About</a></li>
+                    <li><a href="/Prakash/Contact">Contact</a></li>
+                    <li><a href="/Prakash/Services">Services</a></li>
+                    <li><a href="/Prakash/Cart">Cart</a></li>
+
+                    @{
+                        var email = Context.Session.GetString("UserEmail");
+                    }
+
+                    @if (string.IsNullOrEmpty(email))
+                    {
+                        <li><a href="/Account/Login">Login</a></li>
+                        <li><a href="/Account/Register">Register</a></li>
+                    }
+                    else
+                    {
+                        <li><a style="color: green;">Welcome</a></li>
+                        <li><a href="/Account/Logout" style="color: red;">Logout</a></li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-row">
+                <div class="footer-col">
+                    <h4>Zara</h4>
+                    <p>Your one-stop shop for quality clothes and accessories.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/Prakash/Services">Services</a></li>
+                        <li><a href="/Prakash/Cart">Cart</a></li>
+                        <li><a href="/Prakash/Contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p>Email: support@zarastore.com</p>
+                    <p>Phone: +91 98765 43210</p>
+                    <p>Address: 123 Fashion St, Palanpur, India</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Zara. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+@RenderSection("Scripts", required: false)
+</html>

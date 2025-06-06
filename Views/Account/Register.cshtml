@@ -1,0 +1,127 @@
+﻿@model KapdaStore.Models.User
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h2 class="register-heading">📝 Create Your Account</h2>
+
+<form asp-action="Register" method="post" class="register-form">
+
+    <div>
+        <label>Name:</label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+
+    <div>
+        <label>Email:</label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+
+    <div>
+        <label>Password:</label>
+        <input asp-for="PasswordHash" />
+        <span asp-validation-for="PasswordHash" class="text-danger"></span>
+    </div>
+    <button type="submit">Register</button>
+</form>
+<style>
+    .register-heading {
+        text-align: center;
+        font-size: 32px;
+        font-weight: 900;
+        background: linear-gradient(to right, #ff4081, #ff80ab);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 2px 2px 8px rgba(255, 64, 129, 0.2);
+        letter-spacing: 1.2px;
+        margin-top: 20px;
+        margin-bottom: 25px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    
+    
+    .register-form {
+        max-width: 440px;
+        margin: 60px auto;
+        padding: 35px 30px;
+        background: linear-gradient(145deg, #ffffff, #e6e6e6);
+        border-radius: 16px;
+        box-shadow: 8px 8px 20px #d1d1d1, -8px -8px 20px #ffffff;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        transition: all 0.3s ease-in-out;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 28px;
+        color: #333;
+        font-weight: 700;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .register-form div {
+        margin-bottom: 20px;
+    }
+
+    .register-form label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #444;
+    }
+
+    .register-form input {
+        width: 100%;
+        padding: 12px 14px;
+        border: none;
+        border-radius: 10px;
+        background: #f0f0f0;
+        box-shadow: inset 2px 2px 6px #cfcfcf, inset -2px -2px 6px #ffffff;
+        font-size: 15px;
+        transition: all 0.3s ease;
+    }
+
+        .register-form input:focus {
+            background: #fff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(255, 64, 129, 0.5), inset 0 0 5px #ffffff;
+            border: 1px solid #ff4081;
+        }
+
+    .register-form .text-danger {
+        font-size: 13px;
+        color: #e53935;
+        margin-top: 4px;
+        display: block;
+    }
+
+    .register-form button {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(to right, #ff4081, #ff669a);
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        font-size: 17px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 4px 14px rgba(255, 64, 129, 0.4);
+        transition: all 0.3s ease;
+    }
+
+        .register-form button:hover {
+            background: linear-gradient(to right, #ff669a, #ff4081);
+            box-shadow: 0 6px 18px rgba(255, 64, 129, 0.5);
+            transform: translateY(-1px);
+        }
+</style>
+
+
+
+

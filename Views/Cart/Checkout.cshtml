@@ -1,0 +1,79 @@
+﻿@model KapdaStore.Models.CheckoutViewModel
+
+<h2 class="checkout-title">Checkout</h2>
+
+<style>
+    .checkout-title {
+        text-align: center;
+        font-size: 32px;
+        color: #2c3e50;
+        margin: 40px 0 20px;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    .checkout-form {
+        max-width: 500px;
+        margin: auto;
+        background: #ffffff;
+        padding: 30px 40px;
+        border-radius: 16px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+        .checkout-form input,
+        .checkout-form select {
+            width: 100%;
+            padding: 14px 16px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            transition: all 0.3s ease;
+        }
+
+            .checkout-form input:focus,
+            .checkout-form select:focus {
+                border-color: #3498db;
+                background-color: #fff;
+                outline: none;
+            }
+
+        .checkout-form button {
+            width: 100%;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+            .checkout-form button:hover {
+                background: linear-gradient(to right, #2ecc71, #3498db);
+            }
+
+  
+</style>
+
+<form asp-action="PlaceOrder" method="post" class="checkout-form">
+    @Html.AntiForgeryToken()
+
+    <input type="text" name="FullName" placeholder="Full Name" required />
+    <input type="text" name="AddressLine" placeholder="Address" required />
+    <input type="text" name="City" placeholder="City" required />
+    <input type="text" name="PinCode" placeholder="Pincode" required />
+    <input type="tel" name="Phone" placeholder="Phone Number" required />
+
+    <select name="PaymentMethod" required>
+        <option value="">Select Payment</option>
+        <option value="COD">Cash on Delivery</option>
+        <option value="Online">Online Payment</option>
+    </select>
+
+    <button type="submit">Place Order</button>
+</form>

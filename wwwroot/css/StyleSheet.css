@@ -1,0 +1,242 @@
+﻿/* Header Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #111;
+    color: white;
+    padding: 15px 30px;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+    .nav-links a:hover {
+        color: #ccc;
+    }
+
+/* Entire Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    color: white;
+}
+
+/* Zara Logo */
+.logo img {
+    height: 50px;
+}
+
+/* Nav Menu */
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Nav Links */
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+    padding: 6px 10px;
+    transition: 0.3s ease;
+}
+
+    /* Hover effect */
+    .nav-menu a::after {
+        content: "";
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        background: #ff8c00;
+        left: 0;
+        bottom: 0;
+        transition: 0.3s ease;
+    }
+
+    .nav-menu a:hover::after {
+        width: 100%;
+    }
+
+    .nav-menu a:hover {
+        color: #ffd700;
+    }
+
+
+
+/* Body Container */
+.container {
+    padding: 20px;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #222;
+    color: #eee;
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 0.95rem;
+    margin-top: 60px;
+    border-top: 4px solid #444;
+}
+
+
+.about-section {
+    background: linear-gradient(to right, #ffecd2, #fcb69f);
+    padding: 60px 30px;
+    text-align: center;
+    color: #2c3e50;
+    border-radius: 12px;
+    margin: 40px auto;
+    max-width: 900px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+    .about-section h2 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .about-section p {
+        font-size: 18px;
+        line-height: 1.7;
+    }
+
+.contact-section {
+    background: linear-gradient(120deg, #89f7fe, #66a6ff);
+    padding: 60px 30px;
+    text-align: center;
+    color: #1a1a1a;
+    border-radius: 12px;
+    margin: 40px auto;
+    max-width: 900px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+    .contact-section h2 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .contact-section p {
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+
+.services-section {
+    background: linear-gradient(to right, #e0c3fc, #8ec5fc);
+    padding: 60px 30px;
+    color: #2c3e50;
+    text-align: center;
+    border-radius: 12px;
+    margin: 40px auto;
+    max-width: 900px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+    .services-section h2 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .services-section ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .services-section li {
+        font-size: 18px;
+        padding: 10px 0;
+        border-bottom: 1px dashed #ccc;
+    }
+
+
+
+/* Product Section */
+.product-section {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #ffecd2, #fcb69f, #a1c4fd, #c2e9fb); /* Multi-color gradient */
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+/* Grid Layout with 3 columns */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* exactly 3 columns */
+    gap: 30px;
+    justify-items: center;
+}
+
+/* Product Card Styling */
+.product-card {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+    .product-card img {
+        width: 50%;
+        height: auto;
+        border-radius: 8px;
+    }
+    .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .product-card h3 {
+        margin: 10px 0 5px;
+        font-size: 1.2rem;
+    }
+
+    .product-card p {
+        margin: 4px 0;
+        font-size: 0.95rem;
+    }
+
+    .product-card button {
+        margin: 6px 4px;
+        padding: 10px 16px;
+        background-color: #111;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 0.95rem;
+        cursor: pointer;
+    }
+
+        .product-card button:hover {
+            background-color: #333;
+        }

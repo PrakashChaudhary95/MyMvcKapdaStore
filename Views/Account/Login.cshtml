@@ -1,0 +1,151 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<h2 class="login-heading">🔐 Login to Your Account</h2>
+
+<form asp-action="Login" method="post" class="login-form">
+    <div>
+        <label>Email:</label>
+        <input type="email" name="email" required />
+    </div>
+
+    <div>
+        <label>Password</label>
+        <input type="password" name="password" required />
+    </div>
+
+    @if (ViewBag.Error != null)
+    {
+        <div style="color:red">@ViewBag.Error</div>
+    }
+
+    <button type="submit">Login</button>
+</form>
+
+<div class="register-link">
+    <p>
+        👤 New user?
+        <a asp-controller="Account" asp-action="Register">Register here</a>
+    </p>
+</div>
+
+<style>
+    .login-heading {
+        text-align: center;
+        font-size: 32px;
+        font-weight: 900;
+        background: linear-gradient(to right, #f8b500, #ff9900);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        text-shadow: 2px 2px 8px rgba(255, 153, 0, 0.3);
+        letter-spacing: 1.5px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .login-form {
+        max-width: 400px;
+        margin: 40px auto;
+        padding: 30px 30px;
+        background: linear-gradient(135deg, #fceabb, #f8b500);
+        border-radius: 15px;
+        box-shadow: 0 12px 30px rgba(255, 182, 0, 0.5);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        transition: box-shadow 0.3s ease;
+    }
+
+        .login-form:hover {
+            box-shadow: 0 18px 45px rgba(255, 182, 0, 0.75);
+        }
+
+        .login-form div {
+            margin-bottom: 22px;
+        }
+
+        .login-form label {
+            display: block;
+            font-weight: 700;
+            color: #4a3c1a;
+            margin-bottom: 8px;
+            font-size: 17px;
+            text-shadow: 0 1px 0 #fff5cc;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 13px 16px;
+            font-size: 16px;
+            border: 2px solid #f8b500;
+            border-radius: 12px;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            box-sizing: border-box;
+            background: #fff9e6;
+            color: #5a4514;
+            font-weight: 600;
+        }
+
+            .login-form input::placeholder {
+                color: #b88b00;
+                font-weight: 500;
+            }
+
+            .login-form input:focus {
+                border-color: #ff9900;
+                box-shadow: 0 0 12px #ff9900aa;
+                background: #fffef7;
+            }
+
+        .login-form button {
+            width: 100%;
+            padding: 16px 0;
+            background: linear-gradient(45deg, #ff9900, #ffcc33);
+            color: #4a3c1a;
+            font-size: 20px;
+            font-weight: 800;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            box-shadow: 0 6px 12px #ffaa0077;
+            transition: background 0.4s ease, box-shadow 0.4s ease;
+        }
+
+            .login-form button:hover {
+                background: linear-gradient(45deg, #ffaa00, #ffd633);
+                box-shadow: 0 9px 18px #ffaa00bb;
+            }
+
+        .login-form div[style] {
+            font-weight: 700;
+            color: #b80000;
+            background: #ffe0e0;
+            padding: 12px;
+            border-radius: 12px;
+            border: 2px solid #b80000;
+            margin-bottom: 18px;
+            text-align: center;
+            box-shadow: 0 0 8px #b80000aa inset;
+        }
+
+    .register-link {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #4a3c1a;
+    }
+
+        .register-link a {
+            color: #ff6f00;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+            .register-link a:hover {
+                color: #ff9800;
+                text-shadow: 0 0 6px rgba(255, 153, 0, 0.5);
+            }
+</style>
