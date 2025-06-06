@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using KapdaStore.Data;
 
 namespace KapdaStore
+
 {
     public class Program
     {
